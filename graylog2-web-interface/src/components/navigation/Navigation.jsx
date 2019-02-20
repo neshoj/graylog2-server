@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router';
 
-import { Badge, Navbar, Nav, NavItem, NavDropdown } from 'components/graylog';
+import { Navbar, Nav, NavItem, NavDropdown } from 'components/graylog';
 import { LinkContainer } from 'react-router-bootstrap';
 import naturalSort from 'javascript-natural-sort';
 
@@ -13,7 +13,6 @@ import { PluginStore } from 'graylog-web-plugin/plugin';
 
 import Routes from 'routing/Routes';
 import URLUtils from 'util/URLUtils';
-import AppConfig from 'util/AppConfig';
 
 import GlobalThroughput from 'components/throughput/GlobalThroughput';
 import { IfPermitted } from 'components/common';
@@ -23,6 +22,7 @@ import HelpMenu from './HelpMenu';
 import NavigationBrand from './NavigationBrand';
 import NotificationBadge from './NotificationBadge';
 import NavigationLink from './NavigationLink';
+import HeaderBadge from './HeaderBadge';
 import SystemMenu from './SystemMenu';
 import InactiveNavItem from './InactiveNavItem';
 import ScratchpadToggle from './ScratchpadToggle';
@@ -77,11 +77,7 @@ const Navigation = ({ permissions, fullName, location, loginName }) => {
           </LinkContainer>
         </Navbar.Brand>
         <Navbar.Toggle />
-
-        {
-        AppConfig.gl2DevMode()
-          && <Badge bsStyle="danger" className="small-scrn-badge dev-badge">DEV</Badge>
-        }
+        <HeaderBadge />
       </Navbar.Header>
 
       <Navbar.Collapse>
@@ -112,14 +108,9 @@ const Navigation = ({ permissions, fullName, location, loginName }) => {
         <NotificationBadge />
 
         <Nav navbar pullRight className="header-meta-nav">
-          {
-          AppConfig.gl2DevMode()
-            && (
-              <InactiveNavItem className="dev-badge-wrap">
-                <Badge bsStyle="danger" className="dev-badge">DEV</Badge>
-              </InactiveNavItem>
-            )
-          }
+          <InactiveNavItem className="dev-badge-wrap">
+            <HeaderBadge />
+          </InactiveNavItem>
 
           <LinkContainer to={Routes.SYSTEM.NODES.LIST}>
             <GlobalThroughput />
