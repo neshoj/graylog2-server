@@ -607,19 +607,51 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                     }
                                   }
                                 >
-                                  <ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules
+                                  <CustomHighlighting
                                     field="count()"
                                     value={239}
                                   >
-                                    <CustomHighlighting
+                                    <Value
                                       field="count()"
-                                      highlightingRules={Object {}}
+                                      queryId="deadbeef-23"
+                                      render={[Function]}
+                                      type={
+                                        FieldType {
+                                          "value": Immutable.Map {
+                                            "type": "long",
+                                            "properties": Immutable.Set [
+                                              "numeric",
+                                              "enumerable",
+                                            ],
+                                            "indexNames": Immutable.Set [],
+                                          },
+                                        }
+                                      }
                                       value={239}
                                     >
-                                      <Value
+                                      <ValueActions
+                                        element={
+                                          <TypeSpecificValue
+                                            field="count()"
+                                            render={[Function]}
+                                            type={
+                                              FieldType {
+                                                "value": Immutable.Map {
+                                                  "type": "long",
+                                                  "properties": Immutable.Set [
+                                                    "numeric",
+                                                    "enumerable",
+                                                  ],
+                                                  "indexNames": Immutable.Set [],
+                                                },
+                                              }
+                                            }
+                                            value={239}
+                                          />
+                                        }
                                         field="count()"
+                                        menuContainer={<body />}
                                         queryId="deadbeef-23"
-                                        render={[Function]}
                                         type={
                                           FieldType {
                                             "value": Immutable.Map {
@@ -634,8 +666,12 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                         }
                                         value={239}
                                       >
-                                        <ValueActions
-                                          element={
+                                        <OverlayDropdown
+                                          menuContainer={<body />}
+                                          onToggle={[Function]}
+                                          placement="right"
+                                          show={false}
+                                          toggle={
                                             <TypeSpecificValue
                                               field="count()"
                                               render={[Function]}
@@ -654,56 +690,31 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                               value={239}
                                             />
                                           }
-                                          field="count()"
-                                          menuContainer={<body />}
-                                          queryId="deadbeef-23"
-                                          type={
-                                            FieldType {
-                                              "value": Immutable.Map {
-                                                "type": "long",
-                                                "properties": Immutable.Set [
-                                                  "numeric",
-                                                  "enumerable",
-                                                ],
-                                                "indexNames": Immutable.Set [],
-                                              },
-                                            }
-                                          }
-                                          value={239}
                                         >
-                                          <OverlayDropdown
-                                            menuContainer={<body />}
-                                            onToggle={[Function]}
-                                            placement="right"
-                                            show={false}
-                                            toggle={
-                                              <TypeSpecificValue
-                                                field="count()"
-                                                render={[Function]}
-                                                type={
-                                                  FieldType {
-                                                    "value": Immutable.Map {
-                                                      "type": "long",
-                                                      "properties": Immutable.Set [
-                                                        "numeric",
-                                                        "enumerable",
-                                                      ],
-                                                      "indexNames": Immutable.Set [],
-                                                    },
-                                                  }
-                                                }
-                                                value={239}
-                                              />
-                                            }
+                                          <span
+                                            className="dropdowntoggle"
+                                            onClick={[Function]}
+                                            role="presentation"
                                           >
-                                            <span
-                                              className="dropdowntoggle"
-                                              onClick={[Function]}
-                                              role="presentation"
+                                            <TypeSpecificValue
+                                              field="count()"
+                                              render={[Function]}
+                                              type={
+                                                FieldType {
+                                                  "value": Immutable.Map {
+                                                    "type": "long",
+                                                    "properties": Immutable.Set [
+                                                      "numeric",
+                                                      "enumerable",
+                                                    ],
+                                                    "indexNames": Immutable.Set [],
+                                                  },
+                                                }
+                                              }
+                                              value={239}
                                             >
-                                              <TypeSpecificValue
+                                              <Component
                                                 field="count()"
-                                                render={[Function]}
                                                 type={
                                                   FieldType {
                                                     "value": Immutable.Map {
@@ -716,9 +727,9 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                                     },
                                                   }
                                                 }
-                                                value={239}
+                                                value="239"
                                               >
-                                                <Component
+                                                <DecoratedValue
                                                   field="count()"
                                                   type={
                                                     FieldType {
@@ -734,7 +745,7 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                                   }
                                                   value="239"
                                                 >
-                                                  <DecoratedValue
+                                                  <Component
                                                     field="count()"
                                                     type={
                                                       FieldType {
@@ -750,7 +761,7 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                                     }
                                                     value="239"
                                                   >
-                                                    <Component
+                                                    <Highlight
                                                       field="count()"
                                                       type={
                                                         FieldType {
@@ -766,44 +777,27 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                                       }
                                                       value="239"
                                                     >
-                                                      <Highlight
+                                                      <PossiblyHighlight
+                                                        color="#ffec3d"
                                                         field="count()"
-                                                        type={
-                                                          FieldType {
-                                                            "value": Immutable.Map {
-                                                              "type": "long",
-                                                              "properties": Immutable.Set [
-                                                                "numeric",
-                                                                "enumerable",
-                                                              ],
-                                                              "indexNames": Immutable.Set [],
-                                                            },
-                                                          }
-                                                        }
+                                                        highlightRanges={Object {}}
                                                         value="239"
                                                       >
-                                                        <PossiblyHighlight
-                                                          color="#ffec3d"
-                                                          field="count()"
-                                                          highlightRanges={Object {}}
-                                                          value="239"
-                                                        >
-                                                          239
-                                                        </PossiblyHighlight>
-                                                      </Highlight>
-                                                    </Component>
-                                                  </DecoratedValue>
-                                                </Component>
-                                              </TypeSpecificValue>
-                                              <span
-                                                className="caret"
-                                              />
-                                            </span>
-                                          </OverlayDropdown>
-                                        </ValueActions>
-                                      </Value>
-                                    </CustomHighlighting>
-                                  </ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules>
+                                                        239
+                                                      </PossiblyHighlight>
+                                                    </Highlight>
+                                                  </Component>
+                                                </DecoratedValue>
+                                              </Component>
+                                            </TypeSpecificValue>
+                                            <span
+                                              className="caret"
+                                            />
+                                          </span>
+                                        </OverlayDropdown>
+                                      </ValueActions>
+                                    </Value>
+                                  </CustomHighlighting>
                                 </Provider>
                               </td>
                               <td
@@ -820,19 +814,51 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                     }
                                   }
                                 >
-                                  <ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules
+                                  <CustomHighlighting
                                     field="count()"
                                     value={226}
                                   >
-                                    <CustomHighlighting
+                                    <Value
                                       field="count()"
-                                      highlightingRules={Object {}}
+                                      queryId="deadbeef-23"
+                                      render={[Function]}
+                                      type={
+                                        FieldType {
+                                          "value": Immutable.Map {
+                                            "type": "long",
+                                            "properties": Immutable.Set [
+                                              "numeric",
+                                              "enumerable",
+                                            ],
+                                            "indexNames": Immutable.Set [],
+                                          },
+                                        }
+                                      }
                                       value={226}
                                     >
-                                      <Value
+                                      <ValueActions
+                                        element={
+                                          <TypeSpecificValue
+                                            field="count()"
+                                            render={[Function]}
+                                            type={
+                                              FieldType {
+                                                "value": Immutable.Map {
+                                                  "type": "long",
+                                                  "properties": Immutable.Set [
+                                                    "numeric",
+                                                    "enumerable",
+                                                  ],
+                                                  "indexNames": Immutable.Set [],
+                                                },
+                                              }
+                                            }
+                                            value={226}
+                                          />
+                                        }
                                         field="count()"
+                                        menuContainer={<body />}
                                         queryId="deadbeef-23"
-                                        render={[Function]}
                                         type={
                                           FieldType {
                                             "value": Immutable.Map {
@@ -847,8 +873,12 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                         }
                                         value={226}
                                       >
-                                        <ValueActions
-                                          element={
+                                        <OverlayDropdown
+                                          menuContainer={<body />}
+                                          onToggle={[Function]}
+                                          placement="right"
+                                          show={false}
+                                          toggle={
                                             <TypeSpecificValue
                                               field="count()"
                                               render={[Function]}
@@ -867,56 +897,31 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                               value={226}
                                             />
                                           }
-                                          field="count()"
-                                          menuContainer={<body />}
-                                          queryId="deadbeef-23"
-                                          type={
-                                            FieldType {
-                                              "value": Immutable.Map {
-                                                "type": "long",
-                                                "properties": Immutable.Set [
-                                                  "numeric",
-                                                  "enumerable",
-                                                ],
-                                                "indexNames": Immutable.Set [],
-                                              },
-                                            }
-                                          }
-                                          value={226}
                                         >
-                                          <OverlayDropdown
-                                            menuContainer={<body />}
-                                            onToggle={[Function]}
-                                            placement="right"
-                                            show={false}
-                                            toggle={
-                                              <TypeSpecificValue
-                                                field="count()"
-                                                render={[Function]}
-                                                type={
-                                                  FieldType {
-                                                    "value": Immutable.Map {
-                                                      "type": "long",
-                                                      "properties": Immutable.Set [
-                                                        "numeric",
-                                                        "enumerable",
-                                                      ],
-                                                      "indexNames": Immutable.Set [],
-                                                    },
-                                                  }
-                                                }
-                                                value={226}
-                                              />
-                                            }
+                                          <span
+                                            className="dropdowntoggle"
+                                            onClick={[Function]}
+                                            role="presentation"
                                           >
-                                            <span
-                                              className="dropdowntoggle"
-                                              onClick={[Function]}
-                                              role="presentation"
+                                            <TypeSpecificValue
+                                              field="count()"
+                                              render={[Function]}
+                                              type={
+                                                FieldType {
+                                                  "value": Immutable.Map {
+                                                    "type": "long",
+                                                    "properties": Immutable.Set [
+                                                      "numeric",
+                                                      "enumerable",
+                                                    ],
+                                                    "indexNames": Immutable.Set [],
+                                                  },
+                                                }
+                                              }
+                                              value={226}
                                             >
-                                              <TypeSpecificValue
+                                              <Component
                                                 field="count()"
-                                                render={[Function]}
                                                 type={
                                                   FieldType {
                                                     "value": Immutable.Map {
@@ -929,9 +934,9 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                                     },
                                                   }
                                                 }
-                                                value={226}
+                                                value="226"
                                               >
-                                                <Component
+                                                <DecoratedValue
                                                   field="count()"
                                                   type={
                                                     FieldType {
@@ -947,7 +952,7 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                                   }
                                                   value="226"
                                                 >
-                                                  <DecoratedValue
+                                                  <Component
                                                     field="count()"
                                                     type={
                                                       FieldType {
@@ -963,7 +968,7 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                                     }
                                                     value="226"
                                                   >
-                                                    <Component
+                                                    <Highlight
                                                       field="count()"
                                                       type={
                                                         FieldType {
@@ -979,44 +984,27 @@ exports[`DataTable renders column pivot header without offset when rollup is dis
                                                       }
                                                       value="226"
                                                     >
-                                                      <Highlight
+                                                      <PossiblyHighlight
+                                                        color="#ffec3d"
                                                         field="count()"
-                                                        type={
-                                                          FieldType {
-                                                            "value": Immutable.Map {
-                                                              "type": "long",
-                                                              "properties": Immutable.Set [
-                                                                "numeric",
-                                                                "enumerable",
-                                                              ],
-                                                              "indexNames": Immutable.Set [],
-                                                            },
-                                                          }
-                                                        }
+                                                        highlightRanges={Object {}}
                                                         value="226"
                                                       >
-                                                        <PossiblyHighlight
-                                                          color="#ffec3d"
-                                                          field="count()"
-                                                          highlightRanges={Object {}}
-                                                          value="226"
-                                                        >
-                                                          226
-                                                        </PossiblyHighlight>
-                                                      </Highlight>
-                                                    </Component>
-                                                  </DecoratedValue>
-                                                </Component>
-                                              </TypeSpecificValue>
-                                              <span
-                                                className="caret"
-                                              />
-                                            </span>
-                                          </OverlayDropdown>
-                                        </ValueActions>
-                                      </Value>
-                                    </CustomHighlighting>
-                                  </ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules>
+                                                        226
+                                                      </PossiblyHighlight>
+                                                    </Highlight>
+                                                  </Component>
+                                                </DecoratedValue>
+                                              </Component>
+                                            </TypeSpecificValue>
+                                            <span
+                                              className="caret"
+                                            />
+                                          </span>
+                                        </OverlayDropdown>
+                                      </ValueActions>
+                                    </Value>
+                                  </CustomHighlighting>
                                 </Provider>
                               </td>
                             </tr>
@@ -1862,19 +1850,45 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                     }
                                   }
                                 >
-                                  <ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules
+                                  <CustomHighlighting
                                     field="timestamp"
                                     value="2018-10-04T09:43:50.000Z"
                                   >
-                                    <CustomHighlighting
+                                    <Value
                                       field="timestamp"
-                                      highlightingRules={Object {}}
+                                      queryId="deadbeef-23"
+                                      render={[Function]}
+                                      type={
+                                        FieldType {
+                                          "value": Immutable.Map {
+                                            "type": "unknown",
+                                            "properties": Immutable.Set [],
+                                            "indexNames": Immutable.Set [],
+                                          },
+                                        }
+                                      }
                                       value="2018-10-04T09:43:50.000Z"
                                     >
-                                      <Value
+                                      <ValueActions
+                                        element={
+                                          <TypeSpecificValue
+                                            field="timestamp"
+                                            render={[Function]}
+                                            type={
+                                              FieldType {
+                                                "value": Immutable.Map {
+                                                  "type": "unknown",
+                                                  "properties": Immutable.Set [],
+                                                  "indexNames": Immutable.Set [],
+                                                },
+                                              }
+                                            }
+                                            value="2018-10-04T09:43:50.000Z"
+                                          />
+                                        }
                                         field="timestamp"
+                                        menuContainer={<body />}
                                         queryId="deadbeef-23"
-                                        render={[Function]}
                                         type={
                                           FieldType {
                                             "value": Immutable.Map {
@@ -1886,8 +1900,12 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                         }
                                         value="2018-10-04T09:43:50.000Z"
                                       >
-                                        <ValueActions
-                                          element={
+                                        <OverlayDropdown
+                                          menuContainer={<body />}
+                                          onToggle={[Function]}
+                                          placement="right"
+                                          show={false}
+                                          toggle={
                                             <TypeSpecificValue
                                               field="timestamp"
                                               render={[Function]}
@@ -1903,50 +1921,28 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                               value="2018-10-04T09:43:50.000Z"
                                             />
                                           }
-                                          field="timestamp"
-                                          menuContainer={<body />}
-                                          queryId="deadbeef-23"
-                                          type={
-                                            FieldType {
-                                              "value": Immutable.Map {
-                                                "type": "unknown",
-                                                "properties": Immutable.Set [],
-                                                "indexNames": Immutable.Set [],
-                                              },
-                                            }
-                                          }
-                                          value="2018-10-04T09:43:50.000Z"
                                         >
-                                          <OverlayDropdown
-                                            menuContainer={<body />}
-                                            onToggle={[Function]}
-                                            placement="right"
-                                            show={false}
-                                            toggle={
-                                              <TypeSpecificValue
-                                                field="timestamp"
-                                                render={[Function]}
-                                                type={
-                                                  FieldType {
-                                                    "value": Immutable.Map {
-                                                      "type": "unknown",
-                                                      "properties": Immutable.Set [],
-                                                      "indexNames": Immutable.Set [],
-                                                    },
-                                                  }
-                                                }
-                                                value="2018-10-04T09:43:50.000Z"
-                                              />
-                                            }
+                                          <span
+                                            className="dropdowntoggle"
+                                            onClick={[Function]}
+                                            role="presentation"
                                           >
-                                            <span
-                                              className="dropdowntoggle"
-                                              onClick={[Function]}
-                                              role="presentation"
+                                            <TypeSpecificValue
+                                              field="timestamp"
+                                              render={[Function]}
+                                              type={
+                                                FieldType {
+                                                  "value": Immutable.Map {
+                                                    "type": "unknown",
+                                                    "properties": Immutable.Set [],
+                                                    "indexNames": Immutable.Set [],
+                                                  },
+                                                }
+                                              }
+                                              value="2018-10-04T09:43:50.000Z"
                                             >
-                                              <TypeSpecificValue
+                                              <Component
                                                 field="timestamp"
-                                                render={[Function]}
                                                 type={
                                                   FieldType {
                                                     "value": Immutable.Map {
@@ -1958,7 +1954,7 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                 }
                                                 value="2018-10-04T09:43:50.000Z"
                                               >
-                                                <Component
+                                                <DecoratedValue
                                                   field="timestamp"
                                                   type={
                                                     FieldType {
@@ -1971,7 +1967,7 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                   }
                                                   value="2018-10-04T09:43:50.000Z"
                                                 >
-                                                  <DecoratedValue
+                                                  <Component
                                                     field="timestamp"
                                                     type={
                                                       FieldType {
@@ -1984,7 +1980,7 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                     }
                                                     value="2018-10-04T09:43:50.000Z"
                                                   >
-                                                    <Component
+                                                    <Highlight
                                                       field="timestamp"
                                                       type={
                                                         FieldType {
@@ -1997,41 +1993,27 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                       }
                                                       value="2018-10-04T09:43:50.000Z"
                                                     >
-                                                      <Highlight
+                                                      <PossiblyHighlight
+                                                        color="#ffec3d"
                                                         field="timestamp"
-                                                        type={
-                                                          FieldType {
-                                                            "value": Immutable.Map {
-                                                              "type": "unknown",
-                                                              "properties": Immutable.Set [],
-                                                              "indexNames": Immutable.Set [],
-                                                            },
-                                                          }
-                                                        }
+                                                        highlightRanges={Object {}}
                                                         value="2018-10-04T09:43:50.000Z"
                                                       >
-                                                        <PossiblyHighlight
-                                                          color="#ffec3d"
-                                                          field="timestamp"
-                                                          highlightRanges={Object {}}
-                                                          value="2018-10-04T09:43:50.000Z"
-                                                        >
-                                                          2018-10-04T09:43:50.000Z
-                                                        </PossiblyHighlight>
-                                                      </Highlight>
-                                                    </Component>
-                                                  </DecoratedValue>
-                                                </Component>
-                                              </TypeSpecificValue>
-                                              <span
-                                                className="caret"
-                                              />
-                                            </span>
-                                          </OverlayDropdown>
-                                        </ValueActions>
-                                      </Value>
-                                    </CustomHighlighting>
-                                  </ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules>
+                                                        2018-10-04T09:43:50.000Z
+                                                      </PossiblyHighlight>
+                                                    </Highlight>
+                                                  </Component>
+                                                </DecoratedValue>
+                                              </Component>
+                                            </TypeSpecificValue>
+                                            <span
+                                              className="caret"
+                                            />
+                                          </span>
+                                        </OverlayDropdown>
+                                      </ValueActions>
+                                    </Value>
+                                  </CustomHighlighting>
                                 </Provider>
                               </td>
                               <td
@@ -2048,19 +2030,51 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                     }
                                   }
                                 >
-                                  <ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules
+                                  <CustomHighlighting
                                     field="count()"
                                     value={408}
                                   >
-                                    <CustomHighlighting
+                                    <Value
                                       field="count()"
-                                      highlightingRules={Object {}}
+                                      queryId="deadbeef-23"
+                                      render={[Function]}
+                                      type={
+                                        FieldType {
+                                          "value": Immutable.Map {
+                                            "type": "long",
+                                            "properties": Immutable.Set [
+                                              "numeric",
+                                              "enumerable",
+                                            ],
+                                            "indexNames": Immutable.Set [],
+                                          },
+                                        }
+                                      }
                                       value={408}
                                     >
-                                      <Value
+                                      <ValueActions
+                                        element={
+                                          <TypeSpecificValue
+                                            field="count()"
+                                            render={[Function]}
+                                            type={
+                                              FieldType {
+                                                "value": Immutable.Map {
+                                                  "type": "long",
+                                                  "properties": Immutable.Set [
+                                                    "numeric",
+                                                    "enumerable",
+                                                  ],
+                                                  "indexNames": Immutable.Set [],
+                                                },
+                                              }
+                                            }
+                                            value={408}
+                                          />
+                                        }
                                         field="count()"
+                                        menuContainer={<body />}
                                         queryId="deadbeef-23"
-                                        render={[Function]}
                                         type={
                                           FieldType {
                                             "value": Immutable.Map {
@@ -2075,8 +2089,12 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                         }
                                         value={408}
                                       >
-                                        <ValueActions
-                                          element={
+                                        <OverlayDropdown
+                                          menuContainer={<body />}
+                                          onToggle={[Function]}
+                                          placement="right"
+                                          show={false}
+                                          toggle={
                                             <TypeSpecificValue
                                               field="count()"
                                               render={[Function]}
@@ -2095,56 +2113,31 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                               value={408}
                                             />
                                           }
-                                          field="count()"
-                                          menuContainer={<body />}
-                                          queryId="deadbeef-23"
-                                          type={
-                                            FieldType {
-                                              "value": Immutable.Map {
-                                                "type": "long",
-                                                "properties": Immutable.Set [
-                                                  "numeric",
-                                                  "enumerable",
-                                                ],
-                                                "indexNames": Immutable.Set [],
-                                              },
-                                            }
-                                          }
-                                          value={408}
                                         >
-                                          <OverlayDropdown
-                                            menuContainer={<body />}
-                                            onToggle={[Function]}
-                                            placement="right"
-                                            show={false}
-                                            toggle={
-                                              <TypeSpecificValue
-                                                field="count()"
-                                                render={[Function]}
-                                                type={
-                                                  FieldType {
-                                                    "value": Immutable.Map {
-                                                      "type": "long",
-                                                      "properties": Immutable.Set [
-                                                        "numeric",
-                                                        "enumerable",
-                                                      ],
-                                                      "indexNames": Immutable.Set [],
-                                                    },
-                                                  }
-                                                }
-                                                value={408}
-                                              />
-                                            }
+                                          <span
+                                            className="dropdowntoggle"
+                                            onClick={[Function]}
+                                            role="presentation"
                                           >
-                                            <span
-                                              className="dropdowntoggle"
-                                              onClick={[Function]}
-                                              role="presentation"
+                                            <TypeSpecificValue
+                                              field="count()"
+                                              render={[Function]}
+                                              type={
+                                                FieldType {
+                                                  "value": Immutable.Map {
+                                                    "type": "long",
+                                                    "properties": Immutable.Set [
+                                                      "numeric",
+                                                      "enumerable",
+                                                    ],
+                                                    "indexNames": Immutable.Set [],
+                                                  },
+                                                }
+                                              }
+                                              value={408}
                                             >
-                                              <TypeSpecificValue
+                                              <Component
                                                 field="count()"
-                                                render={[Function]}
                                                 type={
                                                   FieldType {
                                                     "value": Immutable.Map {
@@ -2157,9 +2150,9 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                     },
                                                   }
                                                 }
-                                                value={408}
+                                                value="408"
                                               >
-                                                <Component
+                                                <DecoratedValue
                                                   field="count()"
                                                   type={
                                                     FieldType {
@@ -2175,7 +2168,7 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                   }
                                                   value="408"
                                                 >
-                                                  <DecoratedValue
+                                                  <Component
                                                     field="count()"
                                                     type={
                                                       FieldType {
@@ -2191,7 +2184,7 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                     }
                                                     value="408"
                                                   >
-                                                    <Component
+                                                    <Highlight
                                                       field="count()"
                                                       type={
                                                         FieldType {
@@ -2207,44 +2200,27 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                       }
                                                       value="408"
                                                     >
-                                                      <Highlight
+                                                      <PossiblyHighlight
+                                                        color="#ffec3d"
                                                         field="count()"
-                                                        type={
-                                                          FieldType {
-                                                            "value": Immutable.Map {
-                                                              "type": "long",
-                                                              "properties": Immutable.Set [
-                                                                "numeric",
-                                                                "enumerable",
-                                                              ],
-                                                              "indexNames": Immutable.Set [],
-                                                            },
-                                                          }
-                                                        }
+                                                        highlightRanges={Object {}}
                                                         value="408"
                                                       >
-                                                        <PossiblyHighlight
-                                                          color="#ffec3d"
-                                                          field="count()"
-                                                          highlightRanges={Object {}}
-                                                          value="408"
-                                                        >
-                                                          408
-                                                        </PossiblyHighlight>
-                                                      </Highlight>
-                                                    </Component>
-                                                  </DecoratedValue>
-                                                </Component>
-                                              </TypeSpecificValue>
-                                              <span
-                                                className="caret"
-                                              />
-                                            </span>
-                                          </OverlayDropdown>
-                                        </ValueActions>
-                                      </Value>
-                                    </CustomHighlighting>
-                                  </ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules>
+                                                        408
+                                                      </PossiblyHighlight>
+                                                    </Highlight>
+                                                  </Component>
+                                                </DecoratedValue>
+                                              </Component>
+                                            </TypeSpecificValue>
+                                            <span
+                                              className="caret"
+                                            />
+                                          </span>
+                                        </OverlayDropdown>
+                                      </ValueActions>
+                                    </Value>
+                                  </CustomHighlighting>
                                 </Provider>
                               </td>
                               <td
@@ -2264,19 +2240,51 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                     }
                                   }
                                 >
-                                  <ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules
+                                  <CustomHighlighting
                                     field="count()"
                                     value={408}
                                   >
-                                    <CustomHighlighting
+                                    <Value
                                       field="count()"
-                                      highlightingRules={Object {}}
+                                      queryId="deadbeef-23"
+                                      render={[Function]}
+                                      type={
+                                        FieldType {
+                                          "value": Immutable.Map {
+                                            "type": "long",
+                                            "properties": Immutable.Set [
+                                              "numeric",
+                                              "enumerable",
+                                            ],
+                                            "indexNames": Immutable.Set [],
+                                          },
+                                        }
+                                      }
                                       value={408}
                                     >
-                                      <Value
+                                      <ValueActions
+                                        element={
+                                          <TypeSpecificValue
+                                            field="count()"
+                                            render={[Function]}
+                                            type={
+                                              FieldType {
+                                                "value": Immutable.Map {
+                                                  "type": "long",
+                                                  "properties": Immutable.Set [
+                                                    "numeric",
+                                                    "enumerable",
+                                                  ],
+                                                  "indexNames": Immutable.Set [],
+                                                },
+                                              }
+                                            }
+                                            value={408}
+                                          />
+                                        }
                                         field="count()"
+                                        menuContainer={<body />}
                                         queryId="deadbeef-23"
-                                        render={[Function]}
                                         type={
                                           FieldType {
                                             "value": Immutable.Map {
@@ -2291,8 +2299,12 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                         }
                                         value={408}
                                       >
-                                        <ValueActions
-                                          element={
+                                        <OverlayDropdown
+                                          menuContainer={<body />}
+                                          onToggle={[Function]}
+                                          placement="right"
+                                          show={false}
+                                          toggle={
                                             <TypeSpecificValue
                                               field="count()"
                                               render={[Function]}
@@ -2311,56 +2323,31 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                               value={408}
                                             />
                                           }
-                                          field="count()"
-                                          menuContainer={<body />}
-                                          queryId="deadbeef-23"
-                                          type={
-                                            FieldType {
-                                              "value": Immutable.Map {
-                                                "type": "long",
-                                                "properties": Immutable.Set [
-                                                  "numeric",
-                                                  "enumerable",
-                                                ],
-                                                "indexNames": Immutable.Set [],
-                                              },
-                                            }
-                                          }
-                                          value={408}
                                         >
-                                          <OverlayDropdown
-                                            menuContainer={<body />}
-                                            onToggle={[Function]}
-                                            placement="right"
-                                            show={false}
-                                            toggle={
-                                              <TypeSpecificValue
-                                                field="count()"
-                                                render={[Function]}
-                                                type={
-                                                  FieldType {
-                                                    "value": Immutable.Map {
-                                                      "type": "long",
-                                                      "properties": Immutable.Set [
-                                                        "numeric",
-                                                        "enumerable",
-                                                      ],
-                                                      "indexNames": Immutable.Set [],
-                                                    },
-                                                  }
-                                                }
-                                                value={408}
-                                              />
-                                            }
+                                          <span
+                                            className="dropdowntoggle"
+                                            onClick={[Function]}
+                                            role="presentation"
                                           >
-                                            <span
-                                              className="dropdowntoggle"
-                                              onClick={[Function]}
-                                              role="presentation"
+                                            <TypeSpecificValue
+                                              field="count()"
+                                              render={[Function]}
+                                              type={
+                                                FieldType {
+                                                  "value": Immutable.Map {
+                                                    "type": "long",
+                                                    "properties": Immutable.Set [
+                                                      "numeric",
+                                                      "enumerable",
+                                                    ],
+                                                    "indexNames": Immutable.Set [],
+                                                  },
+                                                }
+                                              }
+                                              value={408}
                                             >
-                                              <TypeSpecificValue
+                                              <Component
                                                 field="count()"
-                                                render={[Function]}
                                                 type={
                                                   FieldType {
                                                     "value": Immutable.Map {
@@ -2373,9 +2360,9 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                     },
                                                   }
                                                 }
-                                                value={408}
+                                                value="408"
                                               >
-                                                <Component
+                                                <DecoratedValue
                                                   field="count()"
                                                   type={
                                                     FieldType {
@@ -2391,7 +2378,7 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                   }
                                                   value="408"
                                                 >
-                                                  <DecoratedValue
+                                                  <Component
                                                     field="count()"
                                                     type={
                                                       FieldType {
@@ -2407,7 +2394,7 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                     }
                                                     value="408"
                                                   >
-                                                    <Component
+                                                    <Highlight
                                                       field="count()"
                                                       type={
                                                         FieldType {
@@ -2423,44 +2410,27 @@ exports[`DataTable should render with filled data with rollup 1`] = `
                                                       }
                                                       value="408"
                                                     >
-                                                      <Highlight
+                                                      <PossiblyHighlight
+                                                        color="#ffec3d"
                                                         field="count()"
-                                                        type={
-                                                          FieldType {
-                                                            "value": Immutable.Map {
-                                                              "type": "long",
-                                                              "properties": Immutable.Set [
-                                                                "numeric",
-                                                                "enumerable",
-                                                              ],
-                                                              "indexNames": Immutable.Set [],
-                                                            },
-                                                          }
-                                                        }
+                                                        highlightRanges={Object {}}
                                                         value="408"
                                                       >
-                                                        <PossiblyHighlight
-                                                          color="#ffec3d"
-                                                          field="count()"
-                                                          highlightRanges={Object {}}
-                                                          value="408"
-                                                        >
-                                                          408
-                                                        </PossiblyHighlight>
-                                                      </Highlight>
-                                                    </Component>
-                                                  </DecoratedValue>
-                                                </Component>
-                                              </TypeSpecificValue>
-                                              <span
-                                                className="caret"
-                                              />
-                                            </span>
-                                          </OverlayDropdown>
-                                        </ValueActions>
-                                      </Value>
-                                    </CustomHighlighting>
-                                  </ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules>
+                                                        408
+                                                      </PossiblyHighlight>
+                                                    </Highlight>
+                                                  </Component>
+                                                </DecoratedValue>
+                                              </Component>
+                                            </TypeSpecificValue>
+                                            <span
+                                              className="caret"
+                                            />
+                                          </span>
+                                        </OverlayDropdown>
+                                      </ValueActions>
+                                    </Value>
+                                  </CustomHighlighting>
                                 </Provider>
                               </td>
                             </tr>
@@ -3060,19 +3030,45 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                     }
                                   }
                                 >
-                                  <ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules
+                                  <CustomHighlighting
                                     field="timestamp"
                                     value="2018-10-04T09:43:50.000Z"
                                   >
-                                    <CustomHighlighting
+                                    <Value
                                       field="timestamp"
-                                      highlightingRules={Object {}}
+                                      queryId="deadbeef-23"
+                                      render={[Function]}
+                                      type={
+                                        FieldType {
+                                          "value": Immutable.Map {
+                                            "type": "unknown",
+                                            "properties": Immutable.Set [],
+                                            "indexNames": Immutable.Set [],
+                                          },
+                                        }
+                                      }
                                       value="2018-10-04T09:43:50.000Z"
                                     >
-                                      <Value
+                                      <ValueActions
+                                        element={
+                                          <TypeSpecificValue
+                                            field="timestamp"
+                                            render={[Function]}
+                                            type={
+                                              FieldType {
+                                                "value": Immutable.Map {
+                                                  "type": "unknown",
+                                                  "properties": Immutable.Set [],
+                                                  "indexNames": Immutable.Set [],
+                                                },
+                                              }
+                                            }
+                                            value="2018-10-04T09:43:50.000Z"
+                                          />
+                                        }
                                         field="timestamp"
+                                        menuContainer={<body />}
                                         queryId="deadbeef-23"
-                                        render={[Function]}
                                         type={
                                           FieldType {
                                             "value": Immutable.Map {
@@ -3084,8 +3080,12 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                         }
                                         value="2018-10-04T09:43:50.000Z"
                                       >
-                                        <ValueActions
-                                          element={
+                                        <OverlayDropdown
+                                          menuContainer={<body />}
+                                          onToggle={[Function]}
+                                          placement="right"
+                                          show={false}
+                                          toggle={
                                             <TypeSpecificValue
                                               field="timestamp"
                                               render={[Function]}
@@ -3101,50 +3101,28 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                               value="2018-10-04T09:43:50.000Z"
                                             />
                                           }
-                                          field="timestamp"
-                                          menuContainer={<body />}
-                                          queryId="deadbeef-23"
-                                          type={
-                                            FieldType {
-                                              "value": Immutable.Map {
-                                                "type": "unknown",
-                                                "properties": Immutable.Set [],
-                                                "indexNames": Immutable.Set [],
-                                              },
-                                            }
-                                          }
-                                          value="2018-10-04T09:43:50.000Z"
                                         >
-                                          <OverlayDropdown
-                                            menuContainer={<body />}
-                                            onToggle={[Function]}
-                                            placement="right"
-                                            show={false}
-                                            toggle={
-                                              <TypeSpecificValue
-                                                field="timestamp"
-                                                render={[Function]}
-                                                type={
-                                                  FieldType {
-                                                    "value": Immutable.Map {
-                                                      "type": "unknown",
-                                                      "properties": Immutable.Set [],
-                                                      "indexNames": Immutable.Set [],
-                                                    },
-                                                  }
-                                                }
-                                                value="2018-10-04T09:43:50.000Z"
-                                              />
-                                            }
+                                          <span
+                                            className="dropdowntoggle"
+                                            onClick={[Function]}
+                                            role="presentation"
                                           >
-                                            <span
-                                              className="dropdowntoggle"
-                                              onClick={[Function]}
-                                              role="presentation"
+                                            <TypeSpecificValue
+                                              field="timestamp"
+                                              render={[Function]}
+                                              type={
+                                                FieldType {
+                                                  "value": Immutable.Map {
+                                                    "type": "unknown",
+                                                    "properties": Immutable.Set [],
+                                                    "indexNames": Immutable.Set [],
+                                                  },
+                                                }
+                                              }
+                                              value="2018-10-04T09:43:50.000Z"
                                             >
-                                              <TypeSpecificValue
+                                              <Component
                                                 field="timestamp"
-                                                render={[Function]}
                                                 type={
                                                   FieldType {
                                                     "value": Immutable.Map {
@@ -3156,7 +3134,7 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                                 }
                                                 value="2018-10-04T09:43:50.000Z"
                                               >
-                                                <Component
+                                                <DecoratedValue
                                                   field="timestamp"
                                                   type={
                                                     FieldType {
@@ -3169,7 +3147,7 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                                   }
                                                   value="2018-10-04T09:43:50.000Z"
                                                 >
-                                                  <DecoratedValue
+                                                  <Component
                                                     field="timestamp"
                                                     type={
                                                       FieldType {
@@ -3182,7 +3160,7 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                                     }
                                                     value="2018-10-04T09:43:50.000Z"
                                                   >
-                                                    <Component
+                                                    <Highlight
                                                       field="timestamp"
                                                       type={
                                                         FieldType {
@@ -3195,41 +3173,27 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                                       }
                                                       value="2018-10-04T09:43:50.000Z"
                                                     >
-                                                      <Highlight
+                                                      <PossiblyHighlight
+                                                        color="#ffec3d"
                                                         field="timestamp"
-                                                        type={
-                                                          FieldType {
-                                                            "value": Immutable.Map {
-                                                              "type": "unknown",
-                                                              "properties": Immutable.Set [],
-                                                              "indexNames": Immutable.Set [],
-                                                            },
-                                                          }
-                                                        }
+                                                        highlightRanges={Object {}}
                                                         value="2018-10-04T09:43:50.000Z"
                                                       >
-                                                        <PossiblyHighlight
-                                                          color="#ffec3d"
-                                                          field="timestamp"
-                                                          highlightRanges={Object {}}
-                                                          value="2018-10-04T09:43:50.000Z"
-                                                        >
-                                                          2018-10-04T09:43:50.000Z
-                                                        </PossiblyHighlight>
-                                                      </Highlight>
-                                                    </Component>
-                                                  </DecoratedValue>
-                                                </Component>
-                                              </TypeSpecificValue>
-                                              <span
-                                                className="caret"
-                                              />
-                                            </span>
-                                          </OverlayDropdown>
-                                        </ValueActions>
-                                      </Value>
-                                    </CustomHighlighting>
-                                  </ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules>
+                                                        2018-10-04T09:43:50.000Z
+                                                      </PossiblyHighlight>
+                                                    </Highlight>
+                                                  </Component>
+                                                </DecoratedValue>
+                                              </Component>
+                                            </TypeSpecificValue>
+                                            <span
+                                              className="caret"
+                                            />
+                                          </span>
+                                        </OverlayDropdown>
+                                      </ValueActions>
+                                    </Value>
+                                  </CustomHighlighting>
                                 </Provider>
                               </td>
                               <td
@@ -3249,19 +3213,51 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                     }
                                   }
                                 >
-                                  <ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules
+                                  <CustomHighlighting
                                     field="count()"
                                     value={408}
                                   >
-                                    <CustomHighlighting
+                                    <Value
                                       field="count()"
-                                      highlightingRules={Object {}}
+                                      queryId="deadbeef-23"
+                                      render={[Function]}
+                                      type={
+                                        FieldType {
+                                          "value": Immutable.Map {
+                                            "type": "long",
+                                            "properties": Immutable.Set [
+                                              "numeric",
+                                              "enumerable",
+                                            ],
+                                            "indexNames": Immutable.Set [],
+                                          },
+                                        }
+                                      }
                                       value={408}
                                     >
-                                      <Value
+                                      <ValueActions
+                                        element={
+                                          <TypeSpecificValue
+                                            field="count()"
+                                            render={[Function]}
+                                            type={
+                                              FieldType {
+                                                "value": Immutable.Map {
+                                                  "type": "long",
+                                                  "properties": Immutable.Set [
+                                                    "numeric",
+                                                    "enumerable",
+                                                  ],
+                                                  "indexNames": Immutable.Set [],
+                                                },
+                                              }
+                                            }
+                                            value={408}
+                                          />
+                                        }
                                         field="count()"
+                                        menuContainer={<body />}
                                         queryId="deadbeef-23"
-                                        render={[Function]}
                                         type={
                                           FieldType {
                                             "value": Immutable.Map {
@@ -3276,8 +3272,12 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                         }
                                         value={408}
                                       >
-                                        <ValueActions
-                                          element={
+                                        <OverlayDropdown
+                                          menuContainer={<body />}
+                                          onToggle={[Function]}
+                                          placement="right"
+                                          show={false}
+                                          toggle={
                                             <TypeSpecificValue
                                               field="count()"
                                               render={[Function]}
@@ -3296,56 +3296,31 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                               value={408}
                                             />
                                           }
-                                          field="count()"
-                                          menuContainer={<body />}
-                                          queryId="deadbeef-23"
-                                          type={
-                                            FieldType {
-                                              "value": Immutable.Map {
-                                                "type": "long",
-                                                "properties": Immutable.Set [
-                                                  "numeric",
-                                                  "enumerable",
-                                                ],
-                                                "indexNames": Immutable.Set [],
-                                              },
-                                            }
-                                          }
-                                          value={408}
                                         >
-                                          <OverlayDropdown
-                                            menuContainer={<body />}
-                                            onToggle={[Function]}
-                                            placement="right"
-                                            show={false}
-                                            toggle={
-                                              <TypeSpecificValue
-                                                field="count()"
-                                                render={[Function]}
-                                                type={
-                                                  FieldType {
-                                                    "value": Immutable.Map {
-                                                      "type": "long",
-                                                      "properties": Immutable.Set [
-                                                        "numeric",
-                                                        "enumerable",
-                                                      ],
-                                                      "indexNames": Immutable.Set [],
-                                                    },
-                                                  }
-                                                }
-                                                value={408}
-                                              />
-                                            }
+                                          <span
+                                            className="dropdowntoggle"
+                                            onClick={[Function]}
+                                            role="presentation"
                                           >
-                                            <span
-                                              className="dropdowntoggle"
-                                              onClick={[Function]}
-                                              role="presentation"
+                                            <TypeSpecificValue
+                                              field="count()"
+                                              render={[Function]}
+                                              type={
+                                                FieldType {
+                                                  "value": Immutable.Map {
+                                                    "type": "long",
+                                                    "properties": Immutable.Set [
+                                                      "numeric",
+                                                      "enumerable",
+                                                    ],
+                                                    "indexNames": Immutable.Set [],
+                                                  },
+                                                }
+                                              }
+                                              value={408}
                                             >
-                                              <TypeSpecificValue
+                                              <Component
                                                 field="count()"
-                                                render={[Function]}
                                                 type={
                                                   FieldType {
                                                     "value": Immutable.Map {
@@ -3358,9 +3333,9 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                                     },
                                                   }
                                                 }
-                                                value={408}
+                                                value="408"
                                               >
-                                                <Component
+                                                <DecoratedValue
                                                   field="count()"
                                                   type={
                                                     FieldType {
@@ -3376,7 +3351,7 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                                   }
                                                   value="408"
                                                 >
-                                                  <DecoratedValue
+                                                  <Component
                                                     field="count()"
                                                     type={
                                                       FieldType {
@@ -3392,7 +3367,7 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                                     }
                                                     value="408"
                                                   >
-                                                    <Component
+                                                    <Highlight
                                                       field="count()"
                                                       type={
                                                         FieldType {
@@ -3408,44 +3383,27 @@ exports[`DataTable should render with filled data without rollup 1`] = `
                                                       }
                                                       value="408"
                                                     >
-                                                      <Highlight
+                                                      <PossiblyHighlight
+                                                        color="#ffec3d"
                                                         field="count()"
-                                                        type={
-                                                          FieldType {
-                                                            "value": Immutable.Map {
-                                                              "type": "long",
-                                                              "properties": Immutable.Set [
-                                                                "numeric",
-                                                                "enumerable",
-                                                              ],
-                                                              "indexNames": Immutable.Set [],
-                                                            },
-                                                          }
-                                                        }
+                                                        highlightRanges={Object {}}
                                                         value="408"
                                                       >
-                                                        <PossiblyHighlight
-                                                          color="#ffec3d"
-                                                          field="count()"
-                                                          highlightRanges={Object {}}
-                                                          value="408"
-                                                        >
-                                                          408
-                                                        </PossiblyHighlight>
-                                                      </Highlight>
-                                                    </Component>
-                                                  </DecoratedValue>
-                                                </Component>
-                                              </TypeSpecificValue>
-                                              <span
-                                                className="caret"
-                                              />
-                                            </span>
-                                          </OverlayDropdown>
-                                        </ValueActions>
-                                      </Value>
-                                    </CustomHighlighting>
-                                  </ConnectStoresWrapper[CustomHighlighting] stores=highlightingRules>
+                                                        408
+                                                      </PossiblyHighlight>
+                                                    </Highlight>
+                                                  </Component>
+                                                </DecoratedValue>
+                                              </Component>
+                                            </TypeSpecificValue>
+                                            <span
+                                              className="caret"
+                                            />
+                                          </span>
+                                        </OverlayDropdown>
+                                      </ValueActions>
+                                    </Value>
+                                  </CustomHighlighting>
                                 </Provider>
                               </td>
                             </tr>

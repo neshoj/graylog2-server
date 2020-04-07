@@ -1,12 +1,10 @@
 // @flow strict
 import * as React from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import connect from 'stores/connect';
-
-import { HighlightingRulesStore } from 'views/stores/HighlightingRulesStore';
+import { ActionContext } from 'views/logic/ActionContext';
 import DecoratorContext from 'views/components/messagelist/decoration/DecoratorContext';
-import HighlightingRule from 'views/logic/views/formatting/highlighting/HighlightingRule';
 
 import PossiblyHighlight from './PossiblyHighlight';
 import Highlight from './Highlight';
@@ -14,11 +12,11 @@ import Highlight from './Highlight';
 type Props = {
   children: ?React.Node,
   field: string,
-  highlightingRules: { [string]: Array<HighlightingRule> },
   value?: any,
 };
 
-const CustomHighlighting = ({ children, field: fieldName, value: fieldValue, highlightingRules }: Props) => {
+const CustomHighlighting = ({ children, field: fieldName, value: fieldValue }: Props) => {
+  const { highlightingRules = {} } = useContext(ActionContext);
   const decorators = [];
   const rules = highlightingRules[fieldName] || [];
   rules.forEach((rule) => {
@@ -60,12 +58,4 @@ CustomHighlighting.defaultProps = {
   value: undefined,
 };
 
-export default connect(CustomHighlighting,
-  {
-    highlightingRules: HighlightingRulesStore,
-  },
-  ({ highlightingRules }) => {
-    const highlightingRulesMap = highlightingRules
-      .reduce((prev, cur) => ({ ...prev, [cur.field]: prev[cur.field] ? [...prev[cur.field], cur] : [cur] }), {});
-    return { highlightingRules: highlightingRulesMap };
-  });
+export default CustomHighlighting;

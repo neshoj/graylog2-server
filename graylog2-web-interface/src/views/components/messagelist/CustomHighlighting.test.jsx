@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { mount } from 'wrappedEnzyme';
 
+import { ActionContext } from 'views/logic/ActionContext';
+
 import DecoratorContext from 'views/components/messagelist/decoration/DecoratorContext';
 import HighlightingRule from 'views/logic/views/formatting/highlighting/HighlightingRule';
 import FieldType from 'views/logic/fieldtypes/FieldType';
@@ -19,11 +21,13 @@ describe('CustomHighlighting', () => {
   const value = 42;
   it('renders value as is when no rules exist', () => {
     const wrapper = mount((
-      <CustomHighlighting field={field} value={value} highlightingRules={{}}>
-        <DecoratorContext.Consumer>
-          {(decorators) => renderDecorators(decorators, field, value)}
-        </DecoratorContext.Consumer>
-      </CustomHighlighting>
+      <ActionContext.Provider value={{ highlightingRules: {} }}>
+        <CustomHighlighting field={field} value={value}>
+          <DecoratorContext.Consumer>
+            {(decorators) => renderDecorators(decorators, field, value)}
+          </DecoratorContext.Consumer>
+        </CustomHighlighting>
+      </ActionContext.Provider>
     ));
     expect(wrapper.find('PossiblyHighlight')).toMatchSnapshot();
   });
@@ -34,11 +38,13 @@ describe('CustomHighlighting', () => {
       .color('#bc98fd')
       .build();
     const wrapper = mount((
-      <CustomHighlighting field={field} value={value} highlightingRules={{ bar: [rule] }}>
-        <DecoratorContext.Consumer>
-          {(decorators) => renderDecorators(decorators, field, value)}
-        </DecoratorContext.Consumer>
-      </CustomHighlighting>
+      <ActionContext.Provider value={{ highlightingRules: { bar: [rule] } }}>
+        <CustomHighlighting field={field} value={value}>
+          <DecoratorContext.Consumer>
+            {(decorators) => renderDecorators(decorators, field, value)}
+          </DecoratorContext.Consumer>
+        </CustomHighlighting>
+      </ActionContext.Provider>
     ));
     expect(wrapper.find('PossiblyHighlight')).toMatchSnapshot();
   });
@@ -49,11 +55,13 @@ describe('CustomHighlighting', () => {
       .color('#bc98fd')
       .build();
     const wrapper = mount((
-      <CustomHighlighting field={field} value={value} highlightingRules={{ [field]: [rule] }}>
-        <DecoratorContext.Consumer>
-          {(decorators) => renderDecorators(decorators, field, value)}
-        </DecoratorContext.Consumer>
-      </CustomHighlighting>
+      <ActionContext.Provider value={{ highlightingRules: { [field]: [rule] } }}>
+        <CustomHighlighting field={field} value={value}>
+          <DecoratorContext.Consumer>
+            {(decorators) => renderDecorators(decorators, field, value)}
+          </DecoratorContext.Consumer>
+        </CustomHighlighting>
+      </ActionContext.Provider>
     ));
     expect(wrapper.find('PossiblyHighlight')).toMatchSnapshot();
   });
@@ -64,11 +72,13 @@ describe('CustomHighlighting', () => {
       .color('#bc98fd')
       .build();
     const wrapper = mount((
-      <CustomHighlighting field={field} value={value} highlightingRules={{ [field]: [rule] }}>
-        <DecoratorContext.Consumer>
-          {(decorators) => renderDecorators(decorators, field, value)}
-        </DecoratorContext.Consumer>
-      </CustomHighlighting>
+      <ActionContext.Provider value={{ highlightingRules: { [field]: [rule] } }}>
+        <CustomHighlighting field={field} value={value}>
+          <DecoratorContext.Consumer>
+            {(decorators) => renderDecorators(decorators, field, value)}
+          </DecoratorContext.Consumer>
+        </CustomHighlighting>
+      </ActionContext.Provider>
     ));
     expect(wrapper.find('PossiblyHighlight')).toMatchSnapshot();
   });
@@ -79,11 +89,13 @@ describe('CustomHighlighting', () => {
       .color('#bc98fd')
       .build();
     const wrapper = mount((
-      <CustomHighlighting field={field} value={value} highlightingRules={{ [field]: [rule] }}>
-        <DecoratorContext.Consumer>
-          {(decorators) => renderDecorators(decorators, field, value)}
-        </DecoratorContext.Consumer>
-      </CustomHighlighting>
+      <ActionContext.Provider value={{ highlightingRules: { [field]: [rule] } }}>
+        <CustomHighlighting field={field} value={value} highlightingRules={{ [field]: [rule] }}>
+          <DecoratorContext.Consumer>
+            {(decorators) => renderDecorators(decorators, field, value)}
+          </DecoratorContext.Consumer>
+        </CustomHighlighting>
+      </ActionContext.Provider>
     ));
     expect(wrapper.find('PossiblyHighlight')).toMatchSnapshot();
   });
