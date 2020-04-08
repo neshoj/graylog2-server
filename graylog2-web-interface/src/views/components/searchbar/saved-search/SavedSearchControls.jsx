@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 
 import Routes from 'routing/Routes';
-import StoreProvider from 'injection/StoreProvider';
 import { isPermitted } from 'util/PermissionsMixin';
 import { newDashboardsPath } from 'views/Constants';
 import { Button, ButtonGroup, DropdownButton, MenuItem } from 'components/graylog';
@@ -19,19 +18,14 @@ import ViewLoaderContext from 'views/logic/ViewLoaderContext';
 import NewViewLoaderContext from 'views/logic/NewViewLoaderContext';
 import CSVExportModal from 'views/components/searchbar/csvexport/CSVExportModal';
 import ShareViewModal from 'views/components/views/ShareViewModal';
+import CurrentUserContext from 'components/contexts/CurrentUserContext';
 import * as Permissions from 'views/Permissions';
 
 import SavedSearchForm from './SavedSearchForm';
 import SavedSearchList from './SavedSearchList';
 
-const CurrentUserStore = StoreProvider.getStore('CurrentUser');
-
 type Props = {
   viewStoreState: ViewStoreState,
-  currentUser: {
-    username: string,
-    permissions: Array<string>,
-  },
 };
 
 type State = {
@@ -50,9 +44,6 @@ const _isAllowedToEdit = (view: View, currentUser = {}) => (
 class SavedSearchControls extends React.Component<Props, State> {
   static propTypes = {
     viewStoreState: PropTypes.object.isRequired,
-    currentUser: PropTypes.shape({
-      username: PropTypes.string.isRequired,
-    }).isRequired,
   };
 
   static contextType = ViewLoaderContext;
@@ -184,21 +175,8 @@ class SavedSearchControls extends React.Component<Props, State> {
 
   render() {
     const { showForm, showList, newTitle, showCSVExport, showShareSearch } = this.state;
-    const { currentUser, viewStoreState } = this.props;
-    const { view, dirty } = viewStoreState;
-    const csvExport = showCSVExport && (
-      <CSVExportModal view={view} closeModal={this.toggleCSVExport} />
-    );
+    const { viewStoreState: { view, dirty } } = this.props;
 
-    const shareSearch = showShareSearch && (
-      <ShareViewModal show view={view} onClose={this.toggleShareSearch} />
-    );
-
-    const savedSearchList = showList && (
-      <SavedSearchList loadSavedSearch={this.loadSavedSearch}
-                       deleteSavedSearch={this.deleteSavedSearch}
-                       toggleModal={this.toggleListModal} />
-    );
 
     const loaded = (view && view.id);
     const savedSearchStyle = loaded ? 'star' : 'star-o';
@@ -227,50 +205,48 @@ class SavedSearchControls extends React.Component<Props, State> {
     );
 
     return (
-      <NewViewLoaderContext.Consumer>
-        {(loadNewView) => (
-          <div className="pull-right">
-            <ButtonGroup>
-              <>
-                <Button title={title} ref={(elem) => { this.formTarget = elem; }} onClick={this.toggleFormModal}>
-                  <Icon style={{ color: savedSearchColor }} name={savedSearchStyle} /> Save
-                </Button>
-                {savedSearchForm}
-              </>
-              <Button title="Load a previously saved search"
-                      onClick={this.toggleListModal}>
-                <Icon name="folder-o" /> Load
-              </Button>
-              {savedSearchList}
-              <DropdownButton title={<Icon name="ellipsis-h" />} id="search-actions-dropdown" pullRight noCaret>
-                <MenuItem onSelect={this.loadAsDashboard}><Icon name="dashboard" /> Export to dashboard</MenuItem>
-                <MenuItem onSelect={this.toggleCSVExport}><Icon name="cloud-download" /> Export to CSV</MenuItem>
-                <MenuItem disabled={disableReset} onSelect={() => loadNewView()} data-testid="reset-search">
-                  <Icon name="eraser" /> Reset search
-                </MenuItem>
-                <MenuItem divider />
-                <MenuItem onSelect={this.toggleShareSearch} title="Share search" disabled={!(view && view.id) || !_isAllowedToEdit(view, currentUser)}>
-                  <Icon name="share-alt" /> Share
-                </MenuItem>
-              </DropdownButton>
-              {csvExport}
-              {shareSearch}
-            </ButtonGroup>
-          </div>
+      <CurrentUserContext.Consumer>
+        {(currentUser) => (
+          <NewViewLoaderContext.Consumer>
+            {(loadNewView) => (
+              <div className="pull-right">
+                <ButtonGroup>
+                  <>
+                    <Button title={title} ref={(elem) => { this.formTarget = elem; }} onClick={this.toggleFormModal}>
+                      <Icon style={{ color: savedSearchColor }} name={savedSearchStyle} /> Save
+                    </Button>
+                    {savedSearchForm}
+                  </>
+                  <Button title="Load a previously saved search"
+                          onClick={this.toggleListModal}>
+                    <Icon name="folder-o" /> Load
+                  </Button>
+                  {showList && (
+                    <SavedSearchList loadSavedSearch={this.loadSavedSearch}
+                                     deleteSavedSearch={this.deleteSavedSearch}
+                                     toggleModal={this.toggleListModal} />
+                  )}
+                  <DropdownButton title={<Icon name="ellipsis-h" />} id="search-actions-dropdown" pullRight noCaret>
+                    <MenuItem onSelect={this.loadAsDashboard}><Icon name="dashboard" /> Export to dashboard</MenuItem>
+                    <MenuItem onSelect={this.toggleCSVExport}><Icon name="cloud-download" /> Export to CSV</MenuItem>
+                    <MenuItem disabled={disableReset} onSelect={() => loadNewView()} data-testid="reset-search">
+                      <Icon name="eraser" /> Reset search
+                    </MenuItem>
+                    <MenuItem divider />
+                    <MenuItem onSelect={this.toggleShareSearch} title="Share search" disabled={!(view && view.id) || !_isAllowedToEdit(view, currentUser)}>
+                      <Icon name="share-alt" /> Share
+                    </MenuItem>
+                  </DropdownButton>
+                  {showCSVExport && <CSVExportModal view={view} closeModal={this.toggleCSVExport} />}
+                  {showShareSearch && <ShareViewModal show view={view} currentUser={currentUser} onClose={this.toggleShareSearch} />}
+                </ButtonGroup>
+              </div>
+            )}
+          </NewViewLoaderContext.Consumer>
         )}
-      </NewViewLoaderContext.Consumer>
+      </CurrentUserContext.Consumer>
     );
   }
 }
 
-export default connect(
-  SavedSearchControls,
-  {
-    currentUser: CurrentUserStore,
-    viewStoreState: ViewStore,
-  },
-  ({ viewStoreState, currentUser: { currentUser } = {} }) => ({
-    currentUser,
-    viewStoreState,
-  }),
-);
+export default connect(SavedSearchControls, { viewStoreState: ViewStore }, ({ viewStoreState }) => ({ viewStoreState }));
