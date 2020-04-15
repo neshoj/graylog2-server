@@ -17,9 +17,9 @@ type Props = {
 
 const CustomHighlighting = ({ children, field: fieldName, value: fieldValue }: Props) => {
   const highlightingRules = useContext(HighlightingRulesContext) || [];
-  const keyedHighlightingRules = highlightingRules.reduce((prev, cur) => ({ ...prev, [cur.field]: prev[cur.field] ? [...prev[cur.field], cur] : [cur] }), {});
+  const highlightingRulesMap = highlightingRules.reduce((prev, cur) => ({ ...prev, [cur.field]: prev[cur.field] ? [...prev[cur.field], cur] : [cur] }), {});
   const decorators = [];
-  const rules = keyedHighlightingRules[fieldName] || [];
+  const rules = highlightingRulesMap[fieldName] || [];
   rules.forEach((rule) => {
     const ranges = [];
     if (String(fieldValue) === String(rule.value)) {
