@@ -4,19 +4,16 @@ import styled, { css } from 'styled-components';
 import chroma from 'chroma-js';
 
 import { util } from 'theme';
-import Navigation from 'components/navigation/Navigation';
-import { Scratchpad, Icon, Spinner } from 'components/common';
-import connect from 'stores/connect';
-import StoreProvider from 'injection/StoreProvider';
-import { ScratchpadProvider } from 'providers/ScratchpadProvider';
-import CurrentUserContext from 'components/contexts/CurrentUserContext';
 
+import { ScratchpadProvider } from 'providers/ScratchpadProvider';
+import { Scratchpad, Icon, Spinner } from 'components/common';
+import CurrentUserContext from 'contexts/CurrentUserContext';
+import CurrentUserProvider from 'contexts/CurrentUserProvider';
+import Navigation from 'components/navigation/Navigation';
 import ReportedErrorBoundary from 'components/errors/ReportedErrorBoundary';
 import RuntimeErrorBoundary from 'components/errors/RuntimeErrorBoundary';
 
 import 'stylesheets/typeahead.less';
-
-const CurrentUserStore = StoreProvider.getStore('CurrentUser');
 
 const ScrollToHint = styled.div(({ theme }) => css`
   position: fixed;
@@ -35,47 +32,41 @@ const ScrollToHint = styled.div(({ theme }) => css`
   background: ${chroma(theme.color.brand.tertiary).alpha(0.8).css()};
 `);
 
-const App = ({ children, currentUser, location }) => {
-  if (!currentUser) {
-    return <Spinner />;
-  }
-
-  return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <ScratchpadProvider loginName={currentUser.username}>
-        <Navigation requestPath={location.pathname}
-                    fullName={currentUser.full_name}
-                    loginName={currentUser.username}
-                    permissions={currentUser.permissions} />
-        <ReportedErrorBoundary>
-          <RuntimeErrorBoundary>
+const App = ({ children, location }) => (
+  <CurrentUserProvider>
+    <CurrentUserContext.Consumer>
+      {(currentUser) => {
+        if (!currentUser) {
+          return <Spinner />;
+        }
+        return (
+          <ScratchpadProvider loginName={currentUser.username}>
+            <Navigation requestPath={location.pathname}
+                        fullName={currentUser.full_name}
+                        loginName={currentUser.username}
+                        permissions={currentUser.permissions} />
             <ScrollToHint id="scroll-to-hint">
               <Icon name="arrow-up" />
             </ScrollToHint>
             <Scratchpad />
-            {children}
-          </RuntimeErrorBoundary>
-        </ReportedErrorBoundary>
-      </ScratchpadProvider>
-    </CurrentUserContext.Provider>
-  );
-};
+            <ReportedErrorBoundary>
+              <RuntimeErrorBoundary>
+                {children}
+              </RuntimeErrorBoundary>
+            </ReportedErrorBoundary>
+          </ScratchpadProvider>
+        );
+      }}
+    </CurrentUserContext.Consumer>
+  </CurrentUserProvider>
+);
 
 App.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
   ]).isRequired,
-  currentUser: PropTypes.shape({
-    full_name: PropTypes.string,
-    username: PropTypes.string,
-    permissions: PropTypes.array,
-  }),
   location: PropTypes.object.isRequired,
 };
 
-App.defaultProps = {
-  currentUser: undefined,
-};
-
-export default connect(App, { currentUser: CurrentUserStore }, ({ currentUser: { currentUser } = {} }) => ({ currentUser }));
+export default App;
