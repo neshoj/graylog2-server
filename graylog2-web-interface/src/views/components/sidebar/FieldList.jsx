@@ -1,15 +1,17 @@
 import React from 'react';
-import Reflux from 'reflux';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { is } from 'immutable';
 import { isEqual } from 'lodash';
 import { FixedSizeList as List } from 'react-window';
 
+import connect from 'stores/connect';
+import { ViewMetadataStore } from 'views/stores/ViewMetadataStore';
+import FieldTypesContext from 'views/components/contexts/FieldTypesContext';
+
 import { Button } from 'components/graylog';
 import Field from 'views/components/Field';
 import FieldTypeIcon from 'views/components/sidebar/FieldTypeIcon';
-import { ViewMetadataStore } from 'views/stores/ViewMetadataStore';
 import MessageFieldsFilter from 'logic/message/MessageFieldsFilter';
 
 import styles from './FieldList.css';
@@ -19,16 +21,9 @@ const isReservedField = (fieldName) => MessageFieldsFilter.FILTERED_FIELDS.inclu
 const FieldList = createReactClass({
   propTypes: {
     allFields: PropTypes.object.isRequired,
-    listHeight: PropTypes.number,
-    fields: PropTypes.object.isRequired,
-  },
-
-  mixins: [Reflux.connect(ViewMetadataStore, 'viewMetadata')],
-
-  getDefaultProps() {
-    return {
-      listHeight: 50,
-    };
+    listHeight: PropTypes.number.isRequired,
+    activeQueryFields: PropTypes.object.isRequired,
+    viewMetadata: PropTypes.object.isRequired,
   },
 
   getInitialState() {
@@ -39,7 +34,7 @@ const FieldList = createReactClass({
   },
 
   shouldComponentUpdate(nextProps, nextState) {
-    const { allFields, fields, listHeight } = this.props;
+    const { allFields, activeQueryFields, listHeight } = this.props;
     if (!isEqual(nextProps.listHeight, listHeight)) {
       return true;
     }
@@ -47,12 +42,12 @@ const FieldList = createReactClass({
     if (!isEqual(this.state, nextState)) {
       return true;
     }
-    return !is(nextProps.allFields, allFields) || !is(nextProps.fields, fields);
+    return !is(nextProps.allFields, allFields) || !is(nextProps.activeQueryFields, activeQueryFields);
   },
 
-  _renderField({ fields, fieldType, selectedQuery, selectedView, style }) {
+  _renderField({ activeQueryFields, fieldType, selectedQuery, selectedView, style }) {
     const { name, type } = fieldType;
-    const disabled = !fields.find((f) => f.name === name);
+    const disabled = !activeQueryFields.find((f) => f.name === name);
 
     return (
       <li key={`field-${name}`} className={styles.fieldListItem} style={style}>
@@ -70,7 +65,7 @@ const FieldList = createReactClass({
     );
   },
 
-  _fieldsToShow(fields, allFields, showFieldsBy = 'all') {
+  _fieldsToShow(activeQueryFields, allFields, showFieldsBy = 'all') {
     const isNotReservedField = (f) => !isReservedField(f.name);
     switch (showFieldsBy) {
       case 'all':
@@ -79,25 +74,27 @@ const FieldList = createReactClass({
         return allFields;
       case 'current':
       default:
-        return fields.filter(isNotReservedField);
+        return activeQueryFields.filter(isNotReservedField);
     }
   },
 
-  _renderFieldList({ fields, allFields, showFieldsBy }) {
+  _renderFieldList({ activeQueryFields, allFields, showFieldsBy }) {
     const {
       filter,
+    } = this.state;
+    const {
+      listHeight,
       viewMetadata: {
         id: selectedView,
         activeQuery: selectedQuery,
       },
-    } = this.state;
-    const { listHeight } = this.props;
+    } = this.props;
 
-    if (!fields) {
+    if (!activeQueryFields) {
       return <span>No field information available.</span>;
     }
     const fieldFilter = filter ? ((field) => field.name.toLocaleUpperCase().includes(filter.toLocaleUpperCase())) : () => true;
-    const fieldsToShow = this._fieldsToShow(fields, allFields, showFieldsBy);
+    const fieldsToShow = this._fieldsToShow(activeQueryFields, allFields, showFieldsBy);
     const fieldList = fieldsToShow
       .filter(fieldFilter)
       .sortBy((field) => field.name.toLocaleUpperCase());
@@ -105,7 +102,7 @@ const FieldList = createReactClass({
     if (fieldList.isEmpty()) {
       return <i>No fields to show. Try changing your filter term or select a different field set above.</i>;
     }
-    const Row = ({ index, style }) => this._renderField({ fieldType: fieldList.get(index), selectedQuery, selectedView, fields, style });
+    const Row = ({ index, style }) => this._renderField({ fieldType: fieldList.get(index), selectedQuery, selectedView, activeQueryFields, style });
 
     return (
       <div ref={(elem) => { this.fieldList = elem; }}>
@@ -145,7 +142,7 @@ const FieldList = createReactClass({
     );
   },
   render() {
-    const { allFields, fields } = this.props;
+    const { allFields, activeQueryFields } = this.props;
     const { filter, showFieldsBy } = this.state;
 
     return (
@@ -175,10 +172,29 @@ const FieldList = createReactClass({
           {this.showFieldsByLink('allreserved', 'all including reserved', 'This shows all fields, including reserved (gl2_*) fields.')} fields.
         </div>
         <hr />
-        {this._renderFieldList({ fields, allFields, showFieldsBy })}
+        {this._renderFieldList({ activeQueryFields, allFields, showFieldsBy })}
       </div>
     );
   },
 });
 
-export default FieldList;
+const FieldListWithContext = (props) => (
+  <FieldTypesContext.Consumer>
+    {({ all, queryFields } = {}) => {
+      const { viewMetadata: { activeQuery } } = props;
+      const activeQueryFields = queryFields.get(activeQuery, all);
+      return <FieldList {...props} allFields={all} activeQueryFields={activeQueryFields} />;
+    }}
+  </FieldTypesContext.Consumer>
+);
+
+FieldListWithContext.propTypes = {
+  viewMetadata: PropTypes.object.isRequired,
+  listHeight: PropTypes.number,
+};
+
+FieldListWithContext.defaultProps = {
+  listHeight: 50,
+};
+
+export default connect(FieldListWithContext, { viewMetadata: ViewMetadataStore });
