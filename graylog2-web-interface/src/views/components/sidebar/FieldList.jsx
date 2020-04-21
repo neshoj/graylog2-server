@@ -47,7 +47,7 @@ const FieldList = createReactClass({
 
   _renderField({ activeQueryFields, fieldType, selectedQuery, selectedView, style }) {
     const { name, type } = fieldType;
-    const disabled = !activeQueryFields.find((f) => f.name === name);
+    const disabled = !activeQueryFields?.find((f) => f.name === name);
 
     return (
       <li key={`field-${name}`} className={styles.fieldListItem} style={style}>
@@ -74,7 +74,7 @@ const FieldList = createReactClass({
         return allFields;
       case 'current':
       default:
-        return activeQueryFields.filter(isNotReservedField);
+        return activeQueryFields?.filter(isNotReservedField);
     }
   },
 
@@ -182,7 +182,7 @@ const FieldListWithContext = (props) => (
   <FieldTypesContext.Consumer>
     {({ all, queryFields } = {}) => {
       const { viewMetadata: { activeQuery } } = props;
-      const activeQueryFields = queryFields.get(activeQuery, all);
+      const activeQueryFields = queryFields?.get(activeQuery, all);
       return <FieldList {...props} allFields={all} activeQueryFields={activeQueryFields} />;
     }}
   </FieldTypesContext.Consumer>
