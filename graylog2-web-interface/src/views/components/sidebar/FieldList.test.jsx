@@ -1,10 +1,9 @@
 import React from 'react';
 import { mount } from 'wrappedEnzyme';
-import { List } from 'immutable';
+
+import { simpleFields, simpleQueryFields } from 'fixtures/fields';
 
 import FieldTypesContext from 'views/components/contexts/FieldTypesContext';
-import FieldType from 'views/logic/fieldtypes/FieldType';
-import FieldTypeMapping from 'views/logic/fieldtypes/FieldTypeMapping';
 import FieldList from './FieldList';
 
 jest.mock('views/stores/ViewMetadataStore', () => ({
@@ -18,18 +17,9 @@ jest.mock('views/stores/ViewMetadataStore', () => ({
 }));
 
 describe('<FieldList />', () => {
-  const properties = [{ enumerable: true }];
-  const fieldType1 = new FieldType('string', properties, []);
-  const fieldTypeMapping1 = new FieldTypeMapping('date', fieldType1);
-
-  const fieldType2 = new FieldType('string', properties, []);
-  const fieldTypeMapping2 = new FieldTypeMapping('http_method', fieldType2);
-
-  const allFields = new List([fieldTypeMapping1, fieldTypeMapping2]);
-  const fields = new List([fieldTypeMapping2]);
-
+  const fieldTypesStoreState = { all: simpleFields(), queryFields: simpleQueryFields('aQueryId') };
   const SimpleFieldList = () => (
-    <FieldTypesContext.Provider value={{ all: allFields, queryFields: { get: () => fields } }}>
+    <FieldTypesContext.Provider value={fieldTypesStoreState}>
       <FieldList listHeight={1000} />
     </FieldTypesContext.Provider>
   );
