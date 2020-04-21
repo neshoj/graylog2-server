@@ -1,5 +1,5 @@
 // @flow strict
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { sortBy } from 'lodash';
 import URI from 'urijs';
@@ -7,8 +7,8 @@ import connect from 'stores/connect';
 /* $FlowFixMe: Need to add to flow typed */
 import styled from 'styled-components';
 
+import FieldTypesContext from 'views/components/contexts/FieldTypesContext';
 import { StreamsStore } from 'views/stores/StreamsStore';
-import { FieldTypesStore } from 'views/stores/FieldTypesStore';
 import { ViewStore } from 'views/stores/ViewStore';
 import URLUtils from 'util/URLUtils';
 import { Modal, Button, Row } from 'components/graylog';
@@ -28,7 +28,6 @@ type Option = {
 
 type Props = {
   availableStreams: Array<Option>,
-  availableFields: Array<Option>,
   closeModal: () => void,
 };
 
@@ -70,7 +69,9 @@ const wrapOption = (o) => ({ label: o, value: o });
 const defaultFields = ['timestamp', 'source', 'message'];
 const defaultFieldOptions = defaultFields.map(wrapOption);
 
-const CSVExportModal = ({ closeModal, availableStreams, availableFields }: Props) => {
+const CSVExportModal = ({ closeModal, availableStreams }: Props) => {
+  const fieldTypes = useContext(FieldTypesContext);
+  const availableFields = fieldTypes?.all.map((field) => ({ label: field.name, value: field.name })).sortBy((f) => f.label).toArray();
   const [selectedStream, setSelectedStream] = useState();
   const [selectedFields, setSelectedFields] = useState(defaultFieldOptions);
 
@@ -132,24 +133,20 @@ const CSVExportModal = ({ closeModal, availableStreams, availableFields }: Props
 CSVExportModal.propTypes = {
   closeModal: PropTypes.func,
   availableStreams: PropTypes.array,
-  availableFields: PropTypes.array,
 };
 
 CSVExportModal.defaultProps = {
   closeModal: () => {},
   availableStreams: [],
-  availableFields: [],
 };
 
 export default connect(
   CSVExportModal,
   {
     availableStreams: StreamsStore,
-    availableFields: FieldTypesStore,
   },
-  ({ availableStreams: { streams }, availableFields: { all }, ...rest }) => ({
+  ({ availableStreams: { streams }, ...rest }) => ({
     ...rest,
     availableStreams: sortBy(streams.map((stream) => ({ label: stream.title, value: stream.id })), ['label']),
-    availableFields: all.map((field) => ({ label: field.name, value: field.name })).sortBy((f) => f.label).toArray(),
   }),
 );
