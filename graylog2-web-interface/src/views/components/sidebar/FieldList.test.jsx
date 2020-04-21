@@ -17,9 +17,9 @@ jest.mock('views/stores/ViewMetadataStore', () => ({
 }));
 
 describe('<FieldList />', () => {
-  const fieldTypesStoreState = { all: simpleFields(), queryFields: simpleQueryFields('aQueryId') };
+  const initialFieldTypes = { all: simpleFields(), queryFields: simpleQueryFields('aQueryId') };
   const SimpleFieldList = () => (
-    <FieldTypesContext.Provider value={fieldTypesStoreState}>
+    <FieldTypesContext.Provider value={initialFieldTypes}>
       <FieldList listHeight={1000} />
     </FieldTypesContext.Provider>
   );
