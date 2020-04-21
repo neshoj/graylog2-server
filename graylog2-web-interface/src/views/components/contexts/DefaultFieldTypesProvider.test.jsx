@@ -6,7 +6,7 @@ import { Map, List } from 'immutable';
 import asMock from 'helpers/mocking/AsMock';
 import { FieldTypesStore } from 'views/stores/FieldTypesStore';
 import FieldTypesContext from './FieldTypesContext';
-import FieldTypesProvider from './FieldTypesProvider';
+import DefaultFieldTypesProvider from './DefaultFieldTypesProvider';
 
 const mockEmptyStore = { all: List(), queryFields: Map() };
 
@@ -17,17 +17,17 @@ jest.mock('views/stores/FieldTypesStore', () => ({
   },
 }));
 
-describe('FieldTypesProvider', () => {
+describe('DefaultFieldTypesProvider', () => {
   afterEach(cleanup);
 
   const renderSUT = () => {
     const consume = jest.fn();
     render(
-      <FieldTypesProvider>
+      <DefaultFieldTypesProvider>
         <FieldTypesContext.Consumer>
           {consume}
         </FieldTypesContext.Consumer>
-      </FieldTypesProvider>,
+      </DefaultFieldTypesProvider>,
     );
     return consume;
   };

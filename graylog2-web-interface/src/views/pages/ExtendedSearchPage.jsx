@@ -41,7 +41,7 @@ import IfSearch from 'views/components/search/IfSearch';
 import { AdditionalContext } from 'views/logic/ActionContext';
 import IfInteractive from 'views/components/dashboard/IfInteractive';
 import InteractiveContext from 'views/components/contexts/InteractiveContext';
-import FieldTypesProvider from 'views/components/contexts/FieldTypesProvider';
+import DefaultFieldTypesProvider from 'views/components/contexts/DefaultFieldTypesProvider';
 import bindSearchParamsFromQuery from 'views/hooks/BindSearchParamsFromQuery';
 import { useSyncWithQueryParameters } from 'views/hooks/SyncWithQueryParameters';
 
@@ -156,7 +156,7 @@ const ExtendedSearchPage = ({ route, location = { query: {} }, router, searchRef
   useSyncWithQueryParameters(query);
 
   return (
-    <FieldTypesProvider>
+    <DefaultFieldTypesProvider>
       <CurrentViewTypeProvider>
         <IfInteractive>
           <IfDashboard>
@@ -198,7 +198,7 @@ const ExtendedSearchPage = ({ route, location = { query: {} }, router, searchRef
           )}
         </InteractiveContext.Consumer>
       </CurrentViewTypeProvider>
-    </FieldTypesProvider>
+    </DefaultFieldTypesProvider>
   );
 };
 
