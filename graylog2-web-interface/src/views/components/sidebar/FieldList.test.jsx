@@ -58,7 +58,7 @@ describe('<FieldList />', () => {
     expect(wrapper.find('span.field-element').text()).toBe('http_method');
   });
 
-  it('should show hint when field types are empty', () => {
+  it('should show hint when field types are `undefined`', () => {
     const hint = <span>No field information available.</span>;
     const wrapper = mount(<FieldList listHeight={1000} />);
 
