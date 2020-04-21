@@ -20,10 +20,17 @@ const isReservedField = (fieldName) => MessageFieldsFilter.FILTERED_FIELDS.inclu
 
 const FieldList = createReactClass({
   propTypes: {
-    allFields: PropTypes.object.isRequired,
+    allFields: PropTypes.object,
     listHeight: PropTypes.number.isRequired,
-    activeQueryFields: PropTypes.object.isRequired,
+    activeQueryFields: PropTypes.object,
     viewMetadata: PropTypes.object.isRequired,
+  },
+
+  getDefaultProps() {
+    return {
+      allFields: undefined,
+      activeQueryFields: undefined,
+    };
   },
 
   getInitialState() {

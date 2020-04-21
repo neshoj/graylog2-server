@@ -58,6 +58,13 @@ describe('<FieldList />', () => {
     expect(wrapper.find('span.field-element').text()).toBe('http_method');
   });
 
+  it('should show hint when field types are empty', () => {
+    const hint = <span>No field information available.</span>;
+    const wrapper = mount(<FieldList listHeight={1000} />);
+
+    expect(wrapper).toContainReact(hint);
+  });
+
   it('should show hint when no fields are returned after filtering', () => {
     const hint = <i>No fields to show. Try changing your filter term or select a different field set above.</i>;
     const wrapper = mount(<SimpleFieldList />);
