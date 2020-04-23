@@ -12,7 +12,7 @@ import { isPermitted } from 'util/PermissionsMixin';
 import { PluginStore } from 'graylog-web-plugin/plugin';
 
 import Routes from 'routing/Routes';
-import URLUtils from 'util/URLUtils';
+import { appPrefixed } from 'util/URLUtils';
 
 import GlobalThroughput from 'components/throughput/GlobalThroughput';
 import { IfPermitted } from 'components/common';
@@ -31,11 +31,11 @@ import StyledNavbar from './Navigation.styles';
 const CurrentUserStore = StoreProvider.getStore('CurrentUser');
 
 const _isActive = (requestPath, prefix) => {
-  return requestPath.indexOf(URLUtils.appPrefixed(prefix)) === 0;
+  return requestPath.indexOf(appPrefixed(prefix)) === 0;
 };
 
 const formatSinglePluginRoute = ({ description, path, permissions }) => {
-  const link = <NavigationLink key={description} description={description} path={URLUtils.appPrefixed(path)} />;
+  const link = <NavigationLink key={description} description={description} path={appPrefixed(path)} />;
 
   if (permissions) {
     return <IfPermitted key={description} permissions={permissions}>{link}</IfPermitted>;
@@ -79,7 +79,7 @@ const Navigation = ({ permissions, fullName, location, loginName }) => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <HeaderBadge smallScreen />
-        {pluginItems.map((Item) => <Item smallScreen />)}
+        {pluginItems.map(({ key, compontent: Item }) => <Item key={key} smallScreen />)}
       </Navbar.Header>
 
       <Navbar.Collapse>
@@ -112,7 +112,7 @@ const Navigation = ({ permissions, fullName, location, loginName }) => {
         <Nav navbar pullRight className="header-meta-nav">
           <InactiveNavItem className="dev-badge-wrap">
             <HeaderBadge />
-            {pluginItems.map((Item) => <Item />)}
+            {pluginItems.map(({ key, component: Item }) => <Item key={key} />)}
           </InactiveNavItem>
 
           <LinkContainer to={Routes.SYSTEM.NODES.LIST}>
