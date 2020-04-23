@@ -18,7 +18,7 @@ const renderDecorators = (decorators, field, value) => decorators.map((Decorator
 describe('CustomHighlighting', () => {
   const field = 'foo';
   const value = 42;
-  const SimpleCustomHighlighting = ({ highlightingRules }: {highlightingRules: HighlightingRule[]}) => (
+  const SimpleCustomHighlighting = ({ highlightingRules }: {highlightingRules: Array<HighlightingRule>}) => (
     <HighlightingRuleContext.Provider value={highlightingRules}>
       <CustomHighlighting field={field} value={value}>
         <DecoratorContext.Consumer>
