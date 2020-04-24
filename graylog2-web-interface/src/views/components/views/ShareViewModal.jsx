@@ -54,7 +54,7 @@ class ShareViewModal extends React.Component<Props, State> {
   }
 
   static defaultProps = {
-    currentUser: {},
+    currentUser: undefined,
   };
 
   constructor(props: Props) {
