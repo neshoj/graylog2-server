@@ -8,7 +8,6 @@ import { util } from 'theme';
 import { ScratchpadProvider } from 'providers/ScratchpadProvider';
 import { Scratchpad, Icon, Spinner } from 'components/common';
 import CurrentUserContext from 'contexts/CurrentUserContext';
-import CurrentUserProvider from 'contexts/CurrentUserProvider';
 import Navigation from 'components/navigation/Navigation';
 import ReportedErrorBoundary from 'components/errors/ReportedErrorBoundary';
 import RuntimeErrorBoundary from 'components/errors/RuntimeErrorBoundary';
@@ -33,32 +32,30 @@ const ScrollToHint = styled.div(({ theme }) => css`
 `);
 
 const App = ({ children, location }) => (
-  <CurrentUserProvider>
-    <CurrentUserContext.Consumer>
-      {(currentUser) => {
-        if (!currentUser) {
-          return <Spinner />;
-        }
-        return (
-          <ScratchpadProvider loginName={currentUser.username}>
-            <Navigation requestPath={location.pathname}
-                        fullName={currentUser.full_name}
-                        loginName={currentUser.username}
-                        permissions={currentUser.permissions} />
-            <ScrollToHint id="scroll-to-hint">
-              <Icon name="arrow-up" />
-            </ScrollToHint>
-            <Scratchpad />
-            <ReportedErrorBoundary>
-              <RuntimeErrorBoundary>
-                {children}
-              </RuntimeErrorBoundary>
-            </ReportedErrorBoundary>
-          </ScratchpadProvider>
-        );
-      }}
-    </CurrentUserContext.Consumer>
-  </CurrentUserProvider>
+  <CurrentUserContext.Consumer>
+    {(currentUser) => {
+      if (!currentUser) {
+        return <Spinner />;
+      }
+      return (
+        <ScratchpadProvider loginName={currentUser.username}>
+          <Navigation requestPath={location.pathname}
+                      fullName={currentUser.full_name}
+                      loginName={currentUser.username}
+                      permissions={currentUser.permissions} />
+          <ScrollToHint id="scroll-to-hint">
+            <Icon name="arrow-up" />
+          </ScrollToHint>
+          <Scratchpad />
+          <ReportedErrorBoundary>
+            <RuntimeErrorBoundary>
+              {children}
+            </RuntimeErrorBoundary>
+          </ReportedErrorBoundary>
+        </ScratchpadProvider>
+      );
+    }}
+  </CurrentUserContext.Consumer>
 );
 
 App.propTypes = {
